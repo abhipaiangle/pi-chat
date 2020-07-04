@@ -38,15 +38,15 @@ def login():
 
 @socketio.on('send msg')
 def handleMessage(data):
-        print(data)
-        newdata={'user': data["user"],'msg':data["msg"],'time':time.strftime('%b %d %H:%M:%S',time.localtime()),'channel':data["channel"]}
-        if len([msgs[i] for i in range(len(msgs)) if msgs[i]["channel"]== data["channel"] ])>100:
-            for i in range(len(msgs)):
-                if msgs[i]["channel"] == data["channel"]:
-                    msgs.pop(i)
-                    break
-        msgs.append(newdata)
-        emit('recieved msg',newdata, broadcast = True )
+    print(data)
+    newdata={'user': data["user"],'msg':data["msg"],'time':time.strftime('%b %d %H:%M:%S',time.localtime()),'channel':data["channel"]}
+    if len([msgs[i] for i in range(len(msgs)) if msgs[i]["channel"]== data["channel"] ])>100:
+        for i in range(len(msgs)):
+            if msgs[i]["channel"] == data["channel"]:
+                msgs.pop(i)
+                break
+    msgs.append(newdata)
+    emit('recieved msg',newdata, broadcast = True )
 
 @socketio.on('channel created')
 def addChannel(channel):
