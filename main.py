@@ -71,4 +71,4 @@ def user_append(user):
             users.append(user)
 
 if __name__ == '__main__':
-	socketio.run(app)
+	app.run()
