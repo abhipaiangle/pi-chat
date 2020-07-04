@@ -1,5 +1,8 @@
 Flask
 Flask-SocketIO
+requests
+time
+flask__socketio
 Click==7.0
 gunicorn==19.9.0
 itsdangerous==1.1.0
