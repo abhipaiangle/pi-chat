@@ -15,7 +15,7 @@ users=[]
 def index():
     return render_template('index.html')
 
-@app.route("/login",methods=["POST"])
+@app.route("/login",methods=["GET","POST"])
 def login():
     dname=request.form.get('dname')
     password=request.form.get('password')
@@ -71,4 +71,4 @@ def user_append(user):
             users.append(user)
 
 if __name__ == '__main__':
-	app.run()
+	app.run(debug=True)
