@@ -1,5 +1,3 @@
-import eventlet
-eventlet.monkey_patch()
 import requests
 import time
 from flask import Flask , render_template, session, request, jsonify
