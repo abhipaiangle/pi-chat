@@ -34,10 +34,12 @@ document.addEventListener('DOMContentLoaded',() => {
 		}
 	}); 
 		document.querySelector('#sendmsg').onclick=function(){
+			console.log("Message sent");
 		    dname = document.querySelector('#name').innerHTML;	
 			var msg = document.querySelector('#message').value; 
 			channel= document.querySelector('#presentch').innerHTML;
 			socket.emit('send msg',{'user': dname,'msg': msg, 'channel': channel});
+			console.log("Message emmited");
 			document.querySelector('#message').value="";
 		}
 		
@@ -76,6 +78,7 @@ document.addEventListener('DOMContentLoaded',() => {
 		});
 
 		socket.on('channel recieved',(data)=>{
+			console.log("channel received");
 			const div = document.createElement('div');
 			for(var i=0;i<data.channels.length;i++){
 			const p= document.createElement('p');
