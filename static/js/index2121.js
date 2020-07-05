@@ -1,11 +1,7 @@
 
 document.addEventListener('DOMContentLoaded',() => {
-	if(window.location.protocol == "https:") {
-		var ws_scheme = "wss://";
-	} else {
-		var ws_scheme = "ws://";
-	};
-	var socket = io.connect(ws_scheme + location.host + "/login");
+
+	var socket = io.connect(window.location.href);
 	let channel=document.querySelector('#presentch').innerHTML;
 	let dname=document.querySelector('#name').innerHTML;
 	socket.on('connect', ()=>{
