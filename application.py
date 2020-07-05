@@ -48,12 +48,14 @@ def handleMessage(data):
                     break
         msgs.append(newdata)
         emit('recieved msg',newdata, broadcast = True )
+        socketio.sleep(0)
 
 @socketio.on('channel created')
 def addChannel(channel):
     if channel not in channels:
         channels.append({"ch":channel["ch"],"key":channel["key"]})   
         emit('channel recieved',{"channels":channels} , brodcast = True)
+        socketio.sleep(0)
 
 @socketio.on('join')
 def join(_data):
@@ -61,6 +63,7 @@ def join(_data):
         print(_data["user"] ,"has joined channel", _data["channel"]["ch"])
         data={"data":_data,"msgs":[msgs[i] for i in range(len(msgs)) if msgs[i]["channel"]==_data["channel"]["ch"]]}
         emit('joined',data, brodcast = True)
+        socketio.sleep(0)
 
 @socketio.on('logout_reload')
 def user_append(user):
