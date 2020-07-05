@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded',() => {
 	if(window.location.protocol == "https:") {
 		var ws_scheme = "wss://";
 	} else {
-		var ws_scheme = "ws://"
+		var ws_scheme = "ws://";
 	};
 	var socket = io.connect(ws_scheme + location.host + "/login");
 	let channel=document.querySelector('#presentch').innerHTML;
