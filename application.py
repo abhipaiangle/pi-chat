@@ -6,7 +6,7 @@ from flask_socketio import SocketIO, send, emit
 eventlet.monkey_patch()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
-socketio = SocketIO(app, logger=True, engineio_logger=True)
+socketio = SocketIO(app, logger=True, engineio_logger=True, always_connect=True)
 channels=[{"ch":"General","key":""}]
 dname=""
 msgs=[]
