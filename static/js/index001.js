@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded',() => {
 
-	var socket = io.connect(window.location.href, {transports: [websocket]});
+	var socket = io.connect(window.location.href);
 	let channel=document.querySelector('#presentch').innerHTML;
 	let dname=document.querySelector('#name').innerHTML;
 	socket.on('connect', ()=>{
