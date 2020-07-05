@@ -1,3 +1,5 @@
+import eventlet
+eventlet.monkey_patch()
 import requests
 import time
 from flask import Flask , render_template, session, request, jsonify
@@ -5,7 +7,7 @@ from flask_socketio import SocketIO, send, emit
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
-socketio = SocketIO(app)
+socketio = SocketIO(app, logger=True, engineio_logger=True)
 channels=[{"ch":"General","key":""}]
 dname=""
 msgs=[]
@@ -71,4 +73,4 @@ def user_append(user):
             users.append(user)
 
 if __name__ == '__main__':
-	app.run()
+	socketio.run(app)
