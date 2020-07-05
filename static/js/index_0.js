@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded',() =>{
-	var socket = io.connect('http://127.0.0.1:5000');
+	var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 	let channel=document.querySelector('#presentch').innerHTML;
 	let dname=document.querySelector('#name').innerHTML;
 	socket.on('connect', ()=>{
