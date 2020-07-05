@@ -1,7 +1,11 @@
 
-document.addEventListener('DOMContentLoaded',(serverUrl, token, pid) =>{
-	var sURL = serverUrl+&?user_pid=& + urlencode(pid) + &user_token=& + urlencode(token);
-	var socket = io.connect(sURL, {transports:['polling']});
+document.addEventListener('DOMContentLoaded',() => {
+	if(window.location.protocol == "https:") {
+		var ws_scheme = "wss://";
+	} else {
+		var ws_scheme = "ws://"
+	};
+	var socket = io.connect(ws_scheme + location.host + "/login");
 	let channel=document.querySelector('#presentch').innerHTML;
 	let dname=document.querySelector('#name').innerHTML;
 	socket.on('connect', ()=>{
