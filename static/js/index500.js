@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded',() =>{
-	var socket = io.connect('https://app-pichat.herokuapp.com/login');
+	var socket = io.connect('https://' + document.domain + ':' + location.port);
 	let channel=document.querySelector('#presentch').innerHTML;
 	let dname=document.querySelector('#name').innerHTML;
 	socket.on('connect', ()=>{
