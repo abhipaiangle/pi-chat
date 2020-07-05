@@ -1,6 +1,7 @@
 
-document.addEventListener('DOMContentLoaded',() =>{
-	var socket = io.connect('https://' + document.domain + ':' + location.port);
+document.addEventListener('DOMContentLoaded',(serverUrl, token, pid) =>{
+	var sURL = serverUrl+&?user_pid=& + urlencode(pid) + &user_token=& + urlencode(token);
+	var socket = io.connect(sURL, {transports:['polling']});
 	let channel=document.querySelector('#presentch').innerHTML;
 	let dname=document.querySelector('#name').innerHTML;
 	socket.on('connect', ()=>{
