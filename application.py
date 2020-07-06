@@ -1,12 +1,10 @@
-#import eventlet
 import requests
 import time
 from flask import Flask , render_template, session, request, jsonify
 from flask_socketio import SocketIO, send, emit
-#eventlet.monkey_patch()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
-socketio = SocketIO(app) #,logger=True, engineio_logger=True, always_connect=True)
+socketio = SocketIO(app)
 channels=[{"ch":"General","key":""}]
 dname=""
 msgs=[]
