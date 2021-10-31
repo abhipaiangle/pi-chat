@@ -19,17 +19,17 @@ def index():
 def login():
     dname=request.form.get('dname')
     password=request.form.get('password')
-    found = 0
+    found = False
     for i in range(len(users)):
         if users[i]["dname"] == dname:
-            found = 1
+            found = True
             if users[i]["password"] == password:                
                 channel= users[i]["channel"]
                 return render_template('login.html', dname= dname ,channels=channels,channel=channel)
             else:
-                return render_template('index.html',message="Looks like the Display Name has been already taken or you have entered incorrect password")
+                return render_template('index.html',message="Looks like the typed display name has been already taken or you have entered incorrect password")
 
-    if found == 0:
+    if not found:
         if dname == "" or password == "":
             return render_template('index.html',message="Display Name or Password cannot be empty")
         else:
@@ -71,4 +71,5 @@ def user_append(user):
             users.append(user)
 
 if __name__ == '__main__':
+
 	socketio.run(app)
