@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded',() =>{
 	socket.on('connect', ()=>{
     channel=document.querySelector('#presentch').innerHTML;
 	dname=document.querySelector('#name').innerHTML;	
-	socket.emit('join',{'user': dname,'channel':{'ch':channel,'key': "yvh8273vrhtd^&"}});
-	console.log('Connected');
+	socket.emit('join',{'user': dname,'channel':{'ch':channel,'key': "ifYouAreHackerYouWillReachHere"}});
+	//console.log('Connected');
 	});
 	  
       socket.on('recieved msg',(data)=>{
@@ -47,12 +47,12 @@ document.addEventListener('DOMContentLoaded',() =>{
 				channels.push(p.innerHTML);
 				
 			});
-			console.log(channels);
+			//console.log(channels);
 			if(channels.includes(ch)== true){
 				alert("Channel Already exists");
                 ch= prompt('Channel Name:','');
 			}
-			console.log(ch);
+//			console.log(ch);
 			if(ch != null && ch!=""){
 				var key= prompt('Channel Key:','');
 				socket.emit('channel created',{'ch': ch, 'key': key});
@@ -61,12 +61,12 @@ document.addEventListener('DOMContentLoaded',() =>{
         document.querySelectorAll('.select-room').forEach( p => {
             p.onclick= () => {
 			if (p.innerHTML== "General" || p.innerHTML == document.querySelector('#presentch').innerHTML){
-				var key="yvh8273vrhtd^&";
+				var key="ifYouAreHackerYouWillReachHere";
 			}	
 			else{
 				var key = prompt('Enter Channel Key','');
 			}
-			console.log("Success101");				
+//			console.log("Success");
 			let ch = p.innerHTML;
 			channel={'ch':ch,'key':key};
 			dname = document.querySelector('#name').innerHTML;
