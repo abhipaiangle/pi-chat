@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded',() =>{
 		}
 		
 		document.querySelector('#create').onclick =function(){
-			var ch= prompt('Enter Channel Name:','');
+			var ch= prompt('Channel Name:','');
 			let channels=[];
 			document.querySelectorAll('.select-room').forEach(p=>{
 				channels.push(p.innerHTML);
@@ -50,11 +50,11 @@ document.addEventListener('DOMContentLoaded',() =>{
 			console.log(channels);
 			if(channels.includes(ch)== true){
 				alert("Channel Already exists");
-                ch= prompt('Enter Channel Name:','');
+                ch= prompt('Channel Name:','');
 			}
 			console.log(ch);
 			if(ch != null && ch!=""){
-				var key= prompt('Enter Channel Key:','');
+				var key= prompt('Channel Key:','');
 				socket.emit('channel created',{'ch': ch, 'key': key});
 			}
 		}
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded',() =>{
 			for(var i=0;i<data.channels.length;i++){
 			const p= document.createElement('p');
 			p.innerHTML= `${data.channels[i].ch}` ;
-			p.setAttribute("class","select-room btn btn-otline-info btn-block");
+			p.setAttribute("class","btn btn-otline-info btn-block select-room");
 			div.append(p);
 			}
 			document.querySelector('#channels').innerHTML=div.innerHTML;
